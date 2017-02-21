@@ -17,8 +17,8 @@ export class Home extends Component {
       <div>
         王下邀月熊 Webpack2-React-Redux-Boilerplate
       </div>
-
-      <li><Link to="/detail">详情页(需要先进行登陆操作)</Link></li>
+       <input />
+      <li><Link to="/detail">详情页(需要先进行登陆操作23333777)</Link></li>
       <li><Link to="/login">登陆页</Link></li>
 
     </section>

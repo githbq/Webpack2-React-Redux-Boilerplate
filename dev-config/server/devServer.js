@@ -14,11 +14,12 @@ new WebpackDevServer(webpack(config), {
   historyApiFallback: true,
   quiet: true,
   // noInfo: true,
-  stats: {colors: true}
+  stats: {colors: true},
+  open:true
 }).listen(appsConfig.devServer.port, '0.0.0.0', function (err, result) {
   if (err) {
     return console.log(err);
   }
-
+  require('open')(`http://localhost:${appsConfig.devServer.port}`)
   console.log(`Listening at http://0.0.0.0:${appsConfig.devServer.port}/`);
 });
