@@ -12,38 +12,36 @@
     "mocha": "./node_modules/mocha/bin/mocha -t 10000 --compilers js:babel-core/register",
     "mocha-all": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register --recursive src/**/*.test.js",
     "update": "npm-check -u",
-    "weapp": "better-npm-run weapp",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "weapp": "better-npm-run weapp"
   },
   "betterScripts": {
     "build": {
-      "command": "./node_modules/.bin/webpack --config ./dev-config/webpack.config.js",
+      "command": "rimraf ./dist && \"./node_modules/.bin/webpack\" --config \"./dev-config/webpack.config.js\"",
       "env": {
         "NODE_ENV": "production"
       }
     },
     "build:ssr": {
-      "command": "./node_modules/.bin/webpack --config ./dev-config/webpack.config.js",
+      "command": "rimraf ./dist && \"./node_modules/.bin/webpack\" --config \"./dev-config/webpack.config.js\"",
       "env": {
         "NODE_ENV": "production",
         "TARGET": "ssr"
       }
     },
     "build:server": {
-      "command": "./node_modules/.bin/webpack --config ./dev-config/webpack.server.config.js",
+      "command": "rimraf ./dist && \"./node_modules/.bin/webpack\" --config \"./dev-config/webpack.server.config.js\"",
       "env": {
         "NODE_ENV": "production"
       }
     },
     "build:library": {
-      "command": "./node_modules/.bin/webpack --config ./dev-config/webpack.config.js",
+      "command": "rimraf ./dist && ./node_modules/.bin/webpack --config \"./dev-config/webpack.config.js\"",
       "env": {
         "NODE_ENV": "library"
       }
     },
     "weapp": {
-      "command": "./node_modules/.bin/webpack --config ./dev-config/webpack.weapp.config.js --watch",
+      "command": "\"./node_modules/.bin/webpack\" --config \"./dev-config/webpack.weapp.config.js\" --watch",
       "env": {
         "NODE_ENV": "production"
       }
@@ -76,8 +74,7 @@
   "babel": {
     "extends": "./dev-config/.babelrc"
   },
-  "devDependencies": {
-    "@kadira/storybook": "^2.21.0",
+  "devDependencies": { 
     "autoprefixer": "^6.7.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
