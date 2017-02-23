@@ -44,7 +44,7 @@ class App extends Component {
 
       console.log(prevState);
 
-      return {count: this.state.count + 1}
+      return { count: this.state.count + 1 }
 
     }, () => {
       console.log(this.state.count);
@@ -68,27 +68,27 @@ class App extends Component {
   render() {
 
     //测试Flow类型检查工具
-    const title: string = 'WXChevalier Presentation';
+    const title = 'WXChevalier Presentation';
 
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
+          <img src={logo} className="App-logo" alt="logo" />
           <h1>WXChevalier Presentation</h1>
           <h2>Welcome to React By Webpack-React-Redux-Boilerplate</h2>
         </div>
         <p className="App-intro">
-          应用入口参考 <code>src/App.js</code>
+          应用入口参考2434 <code>111122222</code>
         </p>
 
         <p>
           <a
             style={{ color: 'blue' }}
-            onClick={this.handleClick}>点击加载JQuery</a>
+            onClick={this.handleClick}>点击加载JQueryAAAAAAAAA1111</a>
         </p>
 
         <LazilyLoad modules={{
-          LoadedLate: () => importLazy(System.import('../lazy/loaded_late.js'))
+          LoadedLate: () => importLazy(System.import('../lazy/loaded_late'))
         }}>
           {
             ({LoadedLate}) => {

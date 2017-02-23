@@ -1,14 +1,14 @@
-const { PUBLIC_PATH, APP_PATH,BUILD_PATH } = require('./paths')
+const { APP_PATH, BUILD_PATH, PUBLIC_PATH } = require('./paths')
 
 const config = {
     hot: true, // 使用'webpack/hot/dev-server'
     contentBase: BUILD_PATH, // './src',  // 8080/index.html 
-    publicPath: BUILD_PATH,
+    publicPath: PUBLIC_PATH,
     port: 7000,
     open: true,
     inline: true,
     // clientLogLevel: 'warning', // none, error, warning or info (default).
-    compress: true, // 开启gzip压缩 for everything served
+    compress: false, // 开启gzip压缩 for everything served
     // HTML5 History API
     historyApiFallback: true,
     // watchContentBase: true, // 导致整个页面刷新

@@ -3,11 +3,10 @@
     "version": "1.0.2",
     "description": "Page-Driven Webpack Boilerplate For React-Redux Work Flow",
     "scripts": {
-        "dev": "webpack-dev-server --config \"./dev-config/webpack.config.js\" ",
+        "dev": "better-npm-run dev",
         "start": "webpack-dashboard -- node --harmony ./dev-config/server/devServer.js --host 0.0.0.0",
         "build": "npm run clean && better-npm-run build",
-        "build:ssr": "npm run clean && better-npm-run build:ssr && better-npm-run build:server",
-        "build:library": "npm run clean && better-npm-run build:library",
+        "build:ssr": "npm run clean && better-npm-run build:ssr && better-npm-run build:server", 
         "clean": "rimraf dist",
         "lint": "eslint src",
         "mocha": "./node_modules/mocha/bin/mocha -t 10000 --compilers js:babel-core/register",
@@ -16,31 +15,34 @@
         "weapp": "better-npm-run weapp"
     },
     "betterScripts": {
+        "dev":{
+            "command":"webpack-dev-server --config \"./dev-config/webpack.config.js\" ",
+            "env":{
+                "NODE_ENV":"development"
+            }
+        },
+        "rm":{
+          "command":"rimraf \"./dist\" "
+        },
         "build": {
-            "command": "rimraf ./dist && \"./node_modules/.bin/webpack\" --config \"./dev-config/webpack.config.js\"",
+            "command": "better-npm-run rm && \"./node_modules/.bin/webpack\" --config \"./dev-config/webpack.config.js\"",
             "env": {
                 "NODE_ENV": "production"
             }
         },
         "build:ssr": {
-            "command": "rimraf ./dist && \"./node_modules/.bin/webpack\" --config \"./dev-config/webpack.config.js\"",
+            "command": "better-npm-run rm && \"./node_modules/.bin/webpack\" --config \"./dev-config/webpack.config.js\"",
             "env": {
                 "NODE_ENV": "production",
                 "TARGET": "ssr"
             }
         },
         "build:server": {
-            "command": "rimraf ./dist && \"./node_modules/.bin/webpack\" --config \"./dev-config/webpack.server.config.js\"",
+            "command": "better-npm-run rm && \"./node_modules/.bin/webpack\" --config \"./dev-config/webpack.server.config.js\"",
             "env": {
                 "NODE_ENV": "production"
             }
-        },
-        "build:library": {
-            "command": "rimraf ./dist && ./node_modules/.bin/webpack --config \"./dev-config/webpack.config.js\"",
-            "env": {
-                "NODE_ENV": "library"
-            }
-        },
+        }, 
         "weapp": {
             "command": "\"./node_modules/.bin/webpack\" --config \"./dev-config/webpack.weapp.config.js\" --watch",
             "env": {

@@ -1,33 +1,43 @@
 /**
  * Created by apple on 16/6/8.
  */
-const defaultIndexPage = "./dev-config/server/template.html";
 
+const { ROOT_PATH, APP_PATH, BUILD_PATH, NODE_ENV, __DEV__,TEMPLATE_PATH } = require('./paths'); 
+const path = require('path');
 module.exports = {
 
     //基本的应用配置信息
     apps: [
         //HelloWorld
         {
-            id: "helloworld",
-            src: "./src/simple/helloworld/helloworld.js",
-            indexPage: defaultIndexPage,
+            id: "index",
+            src: "./src/simple/helloworld/helloworld",
+            indexPage: TEMPLATE_PATH,
             compiled: true
         },
         {
             id: "react",
-            src: "./src/react/react_app.js",
-            indexPage: defaultIndexPage,
+            src: "./src/react/react_app",
+            indexPage: TEMPLATE_PATH,
             compiled: false
         },
         {
             id: "redux",
-            src: "./src/redux/redux_app.js",
-            indexPage: defaultIndexPage,
+            src: "./src/redux/redux_app",
+            indexPage: TEMPLATE_PATH,
             compiled: false
         }
     ],
-    appEntrySrc: "./src/react/react_app.js", //当前待调试的APP的入口文件 
+    resolve: {
+        extensions: ['.js', '.jsx', '.json'], // '' 移给enforceExtension配置
+        enforceExtension: false, // true : 不匹配 ''
+        modules: [APP_PATH, 'node_modules'],
+        // 设置路径别名
+        alias: {
+            // img: path.join(APP_PATH, 'img'),
+        },
+        // plugins: [new DirectoryNamedWebpackPlugin()],
+    }, 
     //用于服务端渲染的Server路径
     ssrServer: {
         serverEntrySrc: './src/react/ssr_server.js'
