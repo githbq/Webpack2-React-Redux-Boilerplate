@@ -78,7 +78,7 @@ class App extends Component {
           <h2>Welcome to React By Webpack-React-Redux-Boilerplate</h2>
         </div>
         <p className="App-intro">
-          应用入口参考2434 <code>111122222</code>
+          应用入口参考345677561111
         </p>
 
         <p>

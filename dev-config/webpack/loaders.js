@@ -10,44 +10,50 @@ var NODE_ENV = process.env.NODE_ENV || "development";
 
 //判断当前是否处于开发状态下
 var __DEV__ = NODE_ENV === "development";
+const babelLoaderConfig = {
+  presets: ['latest', 'stage-0', 'react'],  // 开启ES6、部分ES7、react特性, preset相当于预置的插件集合
+  plugins: [['import', {libraryName: 'antd', style: true}]],  // antd模块化加载, https://github.com/ant-design/babel-plugin-import
+  cacheDirectory: true,
+};
 
 //基于Babel的JS/JSX Loader
 exports.jsx = {
-  test: /\.(js|jsx)$/,
+  test: /\.(jsx)$/,
   exclude: /(node_modules)/,
   use: [
     'babel-loader',
   ],
 };
 
-//对于JS与JSX的格式校验
-exports.jslint = {
-  enforce: 'pre',
-  test: /\.(js|jsx)$/,
-  exclude: /(node_modules)/,
-  use: [
-    'eslint-loader',
-  ],
-};
+//开发阶段不参与
+// //对于JS与JSX的格式校验
+// exports.jslint = {
+//   enforce: 'pre',
+//   test: /\.(js|jsx)$/,
+//   exclude: /(node_modules)/,
+//   use: [
+//     'eslint-loader',
+//   ],
+// };
 
-//对于TS与TSX的Loader
-exports.tsx = {
-  test: /\.ts|tsx?$/,
-  exclude: /node_modules/,
-  use: [
-    'awesome-typescript-loader'
-  ]
-};
+// //对于TS与TSX的Loader
+// exports.tsx = {
+//   test: /\.ts|tsx?$/,
+//   exclude: /node_modules/,
+//   use: [
+//     'awesome-typescript-loader'
+//   ]
+// };
 
-//对于TS与TSX的校验
-exports.tslint = {
-  test: /\.tsx?$/,
-  exclude: /node_modules/,
-  use: [
-    'tslint-loader'
-  ]
-};
-
+// //对于TS与TSX的校验
+// exports.tslint = {
+//   test: /\.tsx?$/,
+//   exclude: /node_modules/,
+//   use: [
+//     'tslint-loader'
+//   ]
+// };
+//end 开发阶段不参与
 
 //根据不同的环境开发设置不同的样式加载的Loader
 var sassLoaderSuffix = '?outputStyle=expanded&sourceMap=true&sourceMapContents=true&includePaths[]=./node_modules'

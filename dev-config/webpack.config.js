@@ -14,8 +14,6 @@ const __DEV__ = NODE_ENV === "development";
 //定义统一的Application，不同的单页面会作为不同的Application
 const appsConfig = require("./apps.config");
 const apps = appsConfig.apps;
-
-const devServerConfig = require("./devServerConfig");
 //定义入口变量
 let entry = {};
 
@@ -24,13 +22,13 @@ console.log(`-------------__DEV__:${__DEV__}`);
 if (__DEV__) {
     //开发状态下的默认入口
     entry.dev = ['react-hot-loader/patch',
-        `webpack-dev-server/client?http://0.0.0.0:${devServerConfig.port}`,
+        `webpack-dev-server/client?http://0.0.0.0:${appsConfig.devServerConfig.port}`,
         'webpack/hot/only-dev-server'
     ];
-} 
+}
 entry.vendors = ['./dev-config/vendors.js']; //存放所有的公共文件
 
-appsConfig.apps.forEach((n) => { 
+appsConfig.apps.forEach((n) => {
     n.compiled && (entry[n.id] = (n.src));
 });
 console.log(JSON.stringify(entry))
@@ -69,7 +67,7 @@ var config = {
     },
     externals: utils.externals,
     target: 'web',
-    devServer: devServerConfig
+    devServer: appsConfig.devServerConfig
 };
 
 
@@ -89,7 +87,6 @@ apps.forEach(function(app) {
 
     //判断是否设置了HTML页面,如果设置了则添加
     if (app.indexPage) {
-        console.log(`---------------app.indexPage:${app.indexPage}`)
         //构造HTML页面
         htmlPages.push({
             filename: app.id + ".html",
