@@ -3,8 +3,8 @@ var webpack = require('webpack');
 const loaders = require('./webpack/loaders');
 const plugins = require('./webpack/plugins');
 const utils = require('./webpack/utils');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { APP_PATH, BUILD_PATH, PUBLIC_PATH } = require('./paths')
+const HtmlWebpackPlugin = require('html-webpack-plugin');  
+const { APP_PATH, BUILD_PATH, PUBLIC_PATH } = require('./paths') 
     //获取命令行NODE_ENV环境变量,默认为development
 const NODE_ENV = process.env.NODE_ENV || "development";
 
